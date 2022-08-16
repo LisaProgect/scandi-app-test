@@ -1,0 +1,21 @@
+.MinicartButtonWrapper {
+  position: relative;
+}
+
+.MinicartButton-CounterProducts {
+  position: absolute;
+  background-color: var(--paragraph-font-color);
+  font-weight: 700;
+  font-size: 14px;
+  font-family: 'RobotoBold';
+  border-radius: 50%;
+  padding: 0px;
+  color: #fff;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  width: 21px;
+  height: 21px;
+  justify-content: center;
+  align-items: center;
+}

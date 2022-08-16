@@ -1,0 +1,31 @@
+.Menu-MenuWrapper {
+  margin-top: 24px;
+}
+
+.Menu-ItemList {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Menu-Item {
+  position: relative;
+}
+
+.Menu-LinkActive,
+.Menu-Item:hover > .Menu-Link {
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.Menu-Link {
+  padding: 4px 16px 30px;
+  font-family: 'RalewayRegular';
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+.Menu-Item > .Menu-LinkActive,
+.Menu-Item:hover .Menu-Link {
+  color: var(--accent-color);
+  font-weight: 600;
+  font-family: 'RalewaySemiBold';
+}

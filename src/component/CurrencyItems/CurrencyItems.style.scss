@@ -1,0 +1,19 @@
+.CurrencySwitcher-Item {
+  padding: 15px 20px;
+  width: 100%;
+  text-align: left;
+  background-color: #fff;
+}
+
+.CurrencySwitcher-Item:hover,
+.CurrencySwitcher-Item_isActive {
+  background-color: #eeeeee;
+}
+
+.CurrencySwitcher-Item:first-child {
+  padding-top: 20px;
+}
+
+.CurrencySwitcher-Item:last-child {
+  padding-bottom: 20px;
+}

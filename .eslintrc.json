@@ -6,9 +6,9 @@
   "extends": [
     "react-app",
     "react-app/jest",
-    "prettier",
     "plugin:react/recommended",
-    "airbnb"
+    "airbnb",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -32,6 +32,17 @@
     ],
     "react/react-in-jsx-scope": "off",
     "semi": "warn",
-    "class-methods-use-this": "warn"
+    "class-methods-use-this": "off",
+    "no-restricted-exports": "off",
+    "react/state-in-constructor": "off",
+    "react/jsx-props-no-spreading": [
+      "warn",
+      {
+        "custom": "ignore"
+      }
+    ],
+    "react/static-property-placement": "off",
+    "import/no-named-as-default": "off",
+    "no-underscore-dangle": "off"
   }
 }
