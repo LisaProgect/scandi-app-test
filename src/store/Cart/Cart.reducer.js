@@ -1,5 +1,9 @@
 import BrowserDatabase from '../../util/BrowserDatabase';
-import { ADD_PRODUCT_TO_CART, UPDATE_TOTALS, REMOVE_PRODUCT_FROM_CART } from './Cart.action';
+import {
+  ADD_PRODUCT_TO_CART,
+  UPDATE_TOTALS,
+  REMOVE_PRODUCT_FROM_CART,
+} from './Cart.action';
 
 export const CART_TOTALS = 'cart_totals';
 
@@ -21,6 +25,7 @@ export const CartReducer = (state = initialState, actions) => {
       return;
 
     default:
+      // eslint-disable-next-line consistent-return
       return state;
   }
 };

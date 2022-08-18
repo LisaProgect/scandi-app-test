@@ -9,6 +9,13 @@ const GET_PRODUCTS_BY_CATEGORY = gql`
         name
         inStock
         gallery
+        prices {
+          amount
+          currency {
+            label
+            symbol
+          }
+        }
       }
     }
   }

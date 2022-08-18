@@ -1,57 +1,81 @@
 @font-face {
-  font-family: RalewayBold;
+  font-family: 'Raleway';
   src: url('../fonts/RalewayBold/RalewayBold.woff2') format('woff2'),
     url('../fonts/RalewayBold/RalewayBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: RalewayLight;
+  font-family: 'Raleway';
   src: url('../fonts/RalewayLight/RalewayLight.woff2') format('woff2'),
     url('../fonts/RalewayLight/RalewayLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: RalewayMedium;
+  font-family: 'Raleway';
   src: url('../fonts/RalewayMedium/Raleway-Medium.woff2') format('woff2'),
     url('../fonts/RalewayMedium/Raleway-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: RalewayRegular;
+  font-family: 'Raleway';
   src: url('../fonts/RalewayRegular/RalewayRegular.woff2') format('woff2'),
     url('../fonts/RalewayRegular/RalewayRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: RalewaySemiBold;
+  font-family: 'Raleway';
   src: url('../fonts/RalewaySemiBold/RalewaySemiBold.woff2') format('woff2'),
     url('../fonts/RalewaySemiBold/RalewaySemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: RobotoCondensed;
-  src: url('../fonts/RobotoCondensed/RobotoCondensed-Bold.woff2')
-      format('woff2'),
+  font-family: 'RobotoCondensed';
+  src: url('../fonts/RobotoCondensed/RobotoCondensed-Bold.woff2') format('woff2'),
     url('../fonts/RobotoCondensed/RobotoCondensed-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
+
 @font-face {
-  font-family: RobotoRegular;
+  font-family: 'Roboto';
   src: url('../fonts/RobotoRegular/RobotoRegular.woff2') format('woff2'),
     url('../fonts/RobotoRegular/RobotoRegular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
 }
 @font-face {
-  font-family: RobotoBold;
+  font-family: 'Roboto';
   src: url('../fonts/RobotoBold/RobotoBold.woff2') format('woff2'),
     url('../fonts/RobotoBold/RobotoBold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
 }
 
 :root {
   --accent-color: #5ece7b;
+  --white-color: #fff;
   --paragraph-font-color: #1d1f22;
+  --out-of-stock-color: #8d8f9a;
   --header-total-height: 80px;
   --menu-item-height: 16px;
   --paragraph-font-size: 16px;
   --content-wrapper-width: 1238px;
   --paragraph-font-style: normal;
   --paragraph-font-weight: 400;
-  --paragraph-line-height: 25.59px;
+  --paragraph-line-height: 160%;
   --paragraph-text-transform: none;
   --link-underline: none;
+  --padding-content: 80px;
 }
 
 * {
@@ -68,6 +92,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
+}
+
+figure {
+  display: block;
 }
 
 li {
@@ -100,7 +128,7 @@ body {
 }
 
 body {
-  font-family: 'RalewayRegular', sans-serif;
+  font-family: 'Raleway', sans-serif;
   scroll-behavior: smooth;
   background-color: #fff;
   display: block;

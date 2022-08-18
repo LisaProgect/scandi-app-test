@@ -43,6 +43,7 @@
     ],
     "react/static-property-placement": "off",
     "import/no-named-as-default": "off",
-    "no-underscore-dangle": "off"
+    "no-underscore-dangle": "off",
+    "default-param-last": "off"
   }
 }

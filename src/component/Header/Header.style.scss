@@ -13,6 +13,7 @@
   z-index: 100;
   height: fit-content;
   top: 0;
+  background-color: var(--white-color);
 }
 
 .Header-Nav {
@@ -23,8 +24,6 @@
   justify-content: space-between;
 }
 
-
-
 .Header-WrapperActions {
   display: flex;
   justify-content: space-between;
@@ -33,9 +32,6 @@
   height: 40px;
   margin-top: 23px;
 }
-
-
-
 
 /* MiniCart */
 

@@ -2,29 +2,37 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 
 import MinicartButton from './MinicartButton.component';
+import parseSize from '../../util/CSS';
 
 export class MinicartButtonContainer extends PureComponent {
   static propTypes = {
     miniCartItemsCount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     colorMiniCart: PropTypes.bool,
-    onMinicartButtonClick: PropTypes.func.isRequired,
-    sizeSVG: PropTypes.shape({
-      width: PropTypes.string,
-      height: PropTypes.string,
-    }),
+    onMinicartButtonClick: PropTypes.func,
+    sizeSVG: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   static defaultProps = {
-    miniCartItemsCount: false,
+    miniCartItemsCount: '',
     colorMiniCart: false,
-    sizeSVG: {
-      width: '20',
-      height: '20',
-    },
+    onMinicartButtonClick: () => {},
+    sizeSVG: '20',
   };
 
+  containerProps = () => ({
+    ...this.props,
+    sizeSVG: this._getCorrectSize(),
+  });
+
+  _getCorrectSize() {
+    const { sizeSVG } = this.props;
+
+    const { size } = parseSize(sizeSVG);
+    return size;
+  }
+
   render() {
-    return <MinicartButton {...this.props} />;
+    return <MinicartButton {...this.containerProps()} />;
   }
 }
 

@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import withQuery from '../../util/withQuery';
+import WithQuery from '../../util/WithQuery';
 import CurrencyDispatcher from '../../store/Currency/Currency.dispatcher';
 import { CurrencyListType } from '../../type/Currency';
 
@@ -37,7 +37,7 @@ export class CurrencySwitcherContainer extends PureComponent {
     const { setCurrency } = this.props;
     const { symbol } = currencyItem;
 
-    setCurrency(currencyItem);
+    setCurrency(symbol);
 
     this.setState({ currentCurrencySymbol: symbol });
   }
@@ -58,7 +58,7 @@ export class CurrencySwitcherContainer extends PureComponent {
 }
 
 export const mapStateToProps = (state) => ({
-  currentCurrencyCode: state.currency.symbol,
+  currentCurrencyCode: state.currency,
 });
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -68,4 +68,4 @@ export const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(withQuery.withCurrencies(CurrencySwitcherContainer));
+)(WithQuery.withCurrencies(CurrencySwitcherContainer));

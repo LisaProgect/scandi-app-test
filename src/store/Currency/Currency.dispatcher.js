@@ -3,15 +3,15 @@ import { CURRENT_CURRENCY_ITEM } from './Currency.reducer';
 import { changeCurrency } from './Currency.action';
 
 export class CurrencyDispatcher {
-  addCurrency(dispatch, currencyData) {
-    const currentCurrency = BrowserDatabase.getItem(CURRENT_CURRENCY_ITEM);
+  addCurrency(dispatch, currencySymbol) {
+    const currentCurrencySymbol = BrowserDatabase.getItem(CURRENT_CURRENCY_ITEM);
 
-    if (currentCurrency && currentCurrency.label === currencyData.label) {
+    if (currentCurrencySymbol === currencySymbol) {
       return;
     }
 
-    BrowserDatabase.setItem(currencyData, CURRENT_CURRENCY_ITEM);
-    dispatch(changeCurrency(currencyData));
+    BrowserDatabase.setItem(currencySymbol, CURRENT_CURRENCY_ITEM);
+    dispatch(changeCurrency(currencySymbol));
   }
 }
 

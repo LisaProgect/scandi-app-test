@@ -1,3 +1,3 @@
-import ProductDescriptionPage from './ProductDescriptionPage';
+import ProductDescriptionPage from './ProductDescriptionPage.container';
 
 export default ProductDescriptionPage;

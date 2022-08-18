@@ -1,5 +1,5 @@
 import { lazy, PureComponent, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import Header from '../Header';
 import SomethingWentWrong from '../../route/SomethingWentWrong';
@@ -31,6 +31,7 @@ export class Router extends PureComponent {
       <Suspense fallback={this.renderFallbackPage()}>
         <Header />
         <Routes>
+          <Route path="/" element={<Navigate to="/all" replace />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="pd/:id" element={<ProductPage />} />
           <Route path=":title" element={<ProductListing />} />

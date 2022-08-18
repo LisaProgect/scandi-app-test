@@ -18,7 +18,7 @@
 
 .Menu-Link {
   padding: 4px 16px 30px;
-  font-family: 'RalewayRegular';
+  font-weight: 400;
   text-transform: uppercase;
   line-height: 2;
 }
@@ -27,5 +27,4 @@
 .Menu-Item:hover .Menu-Link {
   color: var(--accent-color);
   font-weight: 600;
-  font-family: 'RalewaySemiBold';
 }

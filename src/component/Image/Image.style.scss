@@ -1,0 +1,31 @@
+:root {
+  --image-default-background: #fff;
+}
+
+.Image {
+  display: inline-block;
+  overflow: hidden;
+  height: 0;
+  width: 100%;
+  background: var(--image-default-background);
+
+  &-Image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    object-fit: contain;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--image-default-background);
+    }
+  }
+}

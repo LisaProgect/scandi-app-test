@@ -1,0 +1,17 @@
+export default {
+  PX: 'px',
+  CM: 'cm',
+  MM: 'mm',
+  IN: 'in',
+  PT: 'pt',
+  PC: 'pc',
+  EM: 'em',
+  EX: 'ex',
+  CH: 'ch',
+  REM: 'rem',
+  VW: 'vw',
+  VH: 'vh',
+  VMIN: 'vmin',
+  VMAX: 'vmax',
+  '%': '%',
+};
