@@ -7,6 +7,7 @@ const GET_PRODUCTS_BY_CATEGORY = gql`
       products {
         id
         name
+        brand
         inStock
         gallery
         prices {

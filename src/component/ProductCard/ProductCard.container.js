@@ -12,6 +12,7 @@ export class ProductCardContainer extends PureComponent {
     inStock: PropTypes.bool.isRequired,
     name: PropTypes.string.isRequired,
     prices: PropTypes.arrayOf(PricesType).isRequired,
+    brand: PropTypes.string.isRequired,
   };
 
   containerProps = () => {

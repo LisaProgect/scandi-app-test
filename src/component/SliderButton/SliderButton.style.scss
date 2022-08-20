@@ -1,0 +1,13 @@
+.SliderButton {
+  width: 24px;
+  height: 24px;
+  background: rgba(0, 0, 0, 0.73);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 10;
+  svg {
+    transform: rotate(var(--angle-rotation));
+  }
+}

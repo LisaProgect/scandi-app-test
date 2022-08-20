@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { createRef, PureComponent } from 'react';
 
-import ChildrenType from '../../type/Common';
+import { ChildrenType } from '../../type/Common';
 
 export class ClickOutside extends PureComponent {
   static propTypes = {

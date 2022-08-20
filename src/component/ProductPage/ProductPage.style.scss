@@ -1,0 +1,8 @@
+.ProductPage {
+  &-Wrapper {
+    padding-top: var(--padding-content);
+    display: grid;
+    grid-template-columns: 729px 292px;
+    grid-column-gap: 100px;
+  }
+}

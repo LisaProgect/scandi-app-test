@@ -1,45 +1,36 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 
+import { RefType } from '../../type/Common';
+
 import './Image.style.scss';
 
 export class Image extends PureComponent {
   static propTypes = {
     src: PropTypes.string,
-    style: PropTypes.shape({
-      width: PropTypes.string,
-      height: PropTypes.string,
-    }),
     alt: PropTypes.string,
     className: PropTypes.string,
+    imgRef: RefType,
   };
 
   static defaultProps = {
     className: '',
     src: '',
     alt: '',
-    style: {},
+    imgRef: () => {},
   };
 
   renderImage() {
-    const { alt, src, style } = this.props;
+    const { alt, src } = this.props;
 
-    return (
-      <img
-        className="Image-Image"
-        src={src || ''}
-        alt={alt}
-        style={style}
-        loading="lazy"
-      />
-    );
+    return <img className="Image-Image" src={src || ''} alt={alt} loading="lazy" />;
   }
 
   render() {
-    const { className } = this.props;
+    const { className, imgRef } = this.props;
 
     return (
-      <div className={`Image ${className}`}>
+      <div className={`Image ${className}`} ref={imgRef}>
         {this.renderImage()}
       </div>
     );

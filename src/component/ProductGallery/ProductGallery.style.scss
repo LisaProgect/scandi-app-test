@@ -1,0 +1,58 @@
+$paddingThumbnail: 40px;
+$heightThumbnail: 80px;
+
+.ProductGallery {
+  display: grid;
+  grid-template-columns: 79px 1fr;
+  grid-column-gap: 40px;
+}
+
+.NavigationSlider {
+  display: grid;
+  transform: translateY(var(--translateY));
+  transition: transform var(--animation-speed);
+
+  &-Thumbnails {
+    display: flex;
+    justify-content: center;
+    max-height: 320px;
+  }
+
+  &-Wrapper {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    transition: height 300ms;
+  }
+
+  &-ThumbnailImage {
+    display: block;
+    width: 79px;
+    height: calc($heightThumbnail + $paddingThumbnail);
+    padding-bottom: $paddingThumbnail;
+  }
+}
+.ProductGallery-ThumbnailImage {
+  height: $heightThumbnail;
+  display: block;
+}
+
+.Slider {
+  width: 610px;
+  height: 511px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-Image {
+    height: 100%;
+  }
+}
+
+.SliderButton {
+  &__up {
+    top: 0;
+  }
+  &__down {
+    bottom: 0;
+  }
+}

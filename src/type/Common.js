@@ -1,5 +1,13 @@
 import PropTypes from 'prop-types';
 
-const ChildrenType = PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]);
+const RefType = PropTypes.oneOfType([
+  PropTypes.func,
+  PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+]);
 
-export default ChildrenType;
+const ChildrenType = PropTypes.oneOfType([
+  PropTypes.arrayOf(PropTypes.node),
+  PropTypes.node,
+]);
+
+export { ChildrenType, RefType };

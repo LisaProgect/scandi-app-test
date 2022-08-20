@@ -38,6 +38,7 @@ const ProductItemType = PropTypes.shape({
   id: PropTypes.string,
   inStock: PropTypes.bool,
   name: PropTypes.string,
+  brand: PropTypes.string,
   prices: PropTypes.arrayOf(PricesType),
 });
 

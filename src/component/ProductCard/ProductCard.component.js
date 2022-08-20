@@ -17,6 +17,7 @@ export class ProductCard extends PureComponent {
     name: PropTypes.string.isRequired,
     prices: PropTypes.arrayOf(PricesType).isRequired,
     srcImg: PropTypes.string.isRequired,
+    brand: PropTypes.string.isRequired,
   };
 
   renderButtonCart() {
@@ -33,7 +34,7 @@ export class ProductCard extends PureComponent {
   }
 
   renderProductContent() {
-    const { prices, name, inStock } = this.props;
+    const { prices, name, inStock, brand } = this.props;
 
     const productContentClass = classNames('ProductCard-Content', {
       'ProductCard-Content_inStock': !inStock,
@@ -42,7 +43,9 @@ export class ProductCard extends PureComponent {
     return (
       <div className={productContentClass}>
         {this.renderButtonCart()}
-        <p className="ProductCard-Name">{name}</p>
+        <p className="ProductCard-Name">
+          {brand} {name}
+        </p>
         {inStock}
         <ProductPrice prices={prices} className="ProductCard-Price" />
       </div>

@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 
-import ChildrenType from '../../type/Common';
+import { ChildrenType } from '../../type/Common';
 
 import './ContentWrapper.style.scss';
 
