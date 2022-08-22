@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import ProductGallery from './ProductGallery.component';
+import { UP, DOWN } from './ProductGallery.config';
 
 export class ProductGalleryContainer extends PureComponent {
   static propTypes = {
@@ -72,13 +73,13 @@ export class ProductGalleryContainer extends PureComponent {
   _handelButtonsClick(type) {
     const { heightThumbnailImage, offsetThumbnail } = this.state;
 
-    if (type === 'UP') {
+    if (type === UP) {
       this.setState({
         offsetThumbnail: offsetThumbnail - heightThumbnailImage,
       });
     }
 
-    if (type === 'DOWN') {
+    if (type === DOWN) {
       this.setState({
         offsetThumbnail: heightThumbnailImage + offsetThumbnail,
       });
@@ -98,21 +99,25 @@ export class ProductGalleryContainer extends PureComponent {
     const { offsetThumbnail, heightThumbnailImage } = this.state;
     const { thumbnailNotInContainer } = this._getNumberThumbnails();
 
-    const isButtonDownShow =
-      thumbnailNotInContainer > 0 &&
-      offsetThumbnail < thumbnailNotInContainer * heightThumbnailImage;
+    const maxHeightContainer = thumbnailNotInContainer * heightThumbnailImage;
+    const minHeightContainer = 0;
 
-    const isButtonUpShow = thumbnailNotInContainer > 0 && offsetThumbnail > 0;
+    const isButtonDownShow =
+      thumbnailNotInContainer > minHeightContainer &&
+      offsetThumbnail < maxHeightContainer;
+
+    const isButtonUpShow =
+      thumbnailNotInContainer > 0 && offsetThumbnail > minHeightContainer;
 
     return { isButtonDownShow, isButtonUpShow };
   }
 
   handelOnClickDown() {
-    return this._handelButtonsClick('DOWN');
+    return this._handelButtonsClick(DOWN);
   }
 
   handelOnClickUp() {
-    return this._handelButtonsClick('UP');
+    return this._handelButtonsClick(UP);
   }
 
   registerRefElement(refs) {

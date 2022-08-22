@@ -61,6 +61,14 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'SourceSansPro';
+  src: url('../fonts/SourceSansProRegular/SourceSansPro-Regular.woff2') format('woff2'),
+    url('../fonts/SourceSansProRegular/SourceSansPro-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
 :root {
   --accent-color: #5ece7b;
   --white-color: #fff;

@@ -1,0 +1,151 @@
+$size-color-large: 32px;
+$size-color-small: 16px;
+
+$height-text-large: 45px;
+$width-text-large: 63px;
+$height-text-small: 24px;
+$width-text-small: 24px;
+
+.ProductAttributes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: start;
+  &-Items {
+    display: flex;
+    justify-content: start;
+  }
+  &-Content {
+    display: flex;
+    flex-direction: column;
+    &__large {
+      .ProductAttribute {
+        &-Label {
+          font-family: 'RobotoCondensed';
+          font-weight: 700;
+          font-style: 18px;
+          line-height: 18px;
+          text-transform: uppercase;
+        }
+      }
+      .ProductAttributeItem {
+        &-Color {
+          & > span {
+            width: $size-color-large;
+            height: $size-color-large;
+          }
+        }
+        &-Color {
+          &.active,
+          &:hover {
+            & > span {
+              &::after {
+                content: '';
+                width: calc($size-color-large + 4px);
+                height: calc($size-color-large + 4px);
+              }
+            }
+          }
+        }
+        &-Text {
+          & > span {
+            width: $width-text-large;
+            height: $height-text-large;
+            margin-right: 12px;
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    &__small {
+      .ProductAttribute {
+        &-Label {
+          font-family: 'Raleway';
+          font-weight: 400;
+          font-style: 14px;
+          line-height: 16px;
+          text-transform: uppercase;
+        }
+      }
+      .ProductAttributeItem {
+        &-Color {
+          & > span {
+            width: $size-color-small;
+            height: $size-color-small;
+          }
+        }
+        &-Color {
+          &.active,
+          &:hover {
+            & > span {
+              &::after {
+                content: '';
+                width: calc($size-color-small + 4px);
+                height: calc($size-color-small + 4px);
+              }
+            }
+          }
+        }
+        &-Text {
+          & > span {
+            width: $width-text-small;
+            height: $height-text-small;
+            margin-right: 8px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+  .ProductAttributeItem {
+    &-Color {
+      & > span {
+        display: block;
+        margin-right: 8px;
+        border: 1px solid var(--border-color);
+      }
+    }
+    &-Color {
+      &.active,
+      &:hover {
+        & > span {
+          &::after {
+            content: '';
+            position: absolute;
+            z-index: 3;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid var(--accent-color);
+          }
+        }
+      }
+    }
+    &-Text {
+      & > span {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: 'SourceSansPro';
+        font-weight: 400;
+        text-transform: uppercase;
+        border: 1px solid var(--paragraph-font-color);
+        overflow: hidden;
+      }
+    }
+    &-Text {
+      &.active,
+      &:hover {
+        & > span {
+          background-color: var(--paragraph-font-color);
+          color: var(--white-color);
+        }
+      }
+    }
+  }
+  .ProductAttribute {
+    &-Label {
+      margin-bottom: 8px;
+    }
+  }
+}

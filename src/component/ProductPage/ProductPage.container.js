@@ -8,9 +8,25 @@ export class ProductPageContainer extends PureComponent {
     product: ProductType.isRequired,
   };
 
+  state = {
+    selectedAttributes: {},
+  };
+
+  containerFunctions = {
+    getAttributes: this._getAttributes.bind(this),
+  };
+
+  _getAttributes(code, value) {
+    this.setState(({ selectedAttributes }) => ({
+      selectedAttributes: {
+        ...selectedAttributes,
+        [code]: value,
+      },
+    }));
+  }
+
   render() {
-    const { product } = this.props;
-    return <ProductPage product={product} />;
+    return <ProductPage {...this.props} {...this.state} {...this.containerFunctions} />;
   }
 }
 

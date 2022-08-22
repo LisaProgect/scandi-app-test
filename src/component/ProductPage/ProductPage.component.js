@@ -1,14 +1,19 @@
 import React, { PureComponent } from 'react';
 import parse from 'html-react-parser';
+import PropTypes from 'prop-types';
 
 import { ProductType } from '../../type/ProductList';
 import ProductGallery from '../ProductGallery';
+import ProductAttributes from '../ProductAttributes';
+import ProductPrice from '../ProductPrice';
 
 import './ProductPage.style.scss';
 
 export class ProductPage extends PureComponent {
   static propTypes = {
     product: ProductType.isRequired,
+    getAttributes: PropTypes.func.isRequired,
+    selectedAttributes: PropTypes.shape({}).isRequired,
   };
 
   renderProductGallery() {
@@ -18,14 +23,82 @@ export class ProductPage extends PureComponent {
     return <ProductGallery gallery={gallery} />;
   }
 
-  renderContentWrapper() {
+  renderProductAttributes() {
+    const {
+      getAttributes,
+      product: { attributes },
+      selectedAttributes,
+    } = this.props;
+
+    return (
+      <ProductAttributes
+        attributes={attributes}
+        updateParameters={getAttributes}
+        className="ProductInfo-Attribute"
+        parameters={selectedAttributes}
+      />
+    );
+  }
+
+  renderPrice() {
+    const {
+      product: { prices },
+    } = this.props;
+
+    return (
+      <div className="ProductInfo-PriceWrapper">
+        <span className="ProductInfo-PriceName">price:</span>
+        <ProductPrice prices={prices} className="ProductInfo-Price" />
+      </div>
+    );
+  }
+
+  renderAddToCart() {
+    const {
+      product: { inStock },
+    } = this.props;
+
+    return (
+      inStock && (
+        <button type="button" className="ProductInfo-AddToCart">
+          ADD TO CART
+        </button>
+      )
+    );
+  }
+
+  renderProductDescription() {
     const {
       product: { description },
     } = this.props;
+
+    return <div className="ProductInfo-Description">{parse(description)}</div>;
+  }
+
+  renderProductTitle() {
+    const {
+      product: { brand, name },
+    } = this.props;
+
+    return (
+      <h1 className="ProductInfo-Title">
+        <span className="ProductInfo-Brand">{brand}</span>
+        {name}
+      </h1>
+    );
+  }
+
+  renderContentWrapper() {
     return (
       <div className="ProductPage-Wrapper">
         {this.renderProductGallery()}
-        {parse(description)}
+        <div className="ProductInfo">
+          {this.renderProductTitle()}
+          {this.renderProductAttributes()}
+          {this.renderPrice()}
+          {this.renderAddToCart()}
+          {this.renderProductDescription()}
+        </div>
       </div>
     );
   }

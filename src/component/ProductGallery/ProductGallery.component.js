@@ -103,7 +103,7 @@ export class ProductGallery extends PureComponent {
                 '--animation-speed': '400ms',
               }}
             >
-              {gallery.map(this.renderThumbnail)}
+              {gallery && gallery.map(this.renderThumbnail)}
             </div>
           </div>,
         )}

@@ -30,7 +30,7 @@ export class ProductPriceContainer extends PureComponent {
   }
 
   render() {
-    return <ProductPrice {...this.containerProps()} />;
+    return <ProductPrice {...this.containerProps()} {...this.props} />;
   }
 }
 

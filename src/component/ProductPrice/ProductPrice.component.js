@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 
 import './ProductPrice.style.scss';
 
@@ -16,7 +17,12 @@ export class ProductPrice extends PureComponent {
 
   render() {
     const { amount, symbol, className } = this.props;
-    return <span className={`ProductPrice ${className}`}>{`${symbol}${amount}`}</span>;
+
+    const productPriceClass = classNames('ProductPrice', {
+      [className]: className,
+    });
+
+    return <span className={productPriceClass}>{`${symbol}${amount}`}</span>;
   }
 }
 

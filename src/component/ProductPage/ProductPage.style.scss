@@ -1,8 +1,70 @@
+$title-font-size: 30px;
+$title-line-height: 27px;
+
 .ProductPage {
   &-Wrapper {
     padding-top: var(--padding-content);
     display: grid;
     grid-template-columns: 729px 292px;
     grid-column-gap: 100px;
+  }
+}
+
+.ProductInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  &-Title {
+    font-size: $title-font-size;
+    line-height: $title-line-height;
+    font-weight: 400;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    margin-bottom: 43px;
+  }
+  &-Brand {
+    font-weight: 600;
+    padding-bottom: 16px;
+  }
+  &-Description {
+    & > * {
+      font-family: 'Roboto';
+      line-height: var(--paragraph-line-height);
+    }
+  }
+  &-PriceWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-bottom: 32px;
+  }
+  &-PriceName {
+    font-family: 'RobotoCondensed';
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+  }
+  &-Price {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  &-AddToCart {
+    background-color: var(--accent-color);
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--white-color);
+    width: 100%;
+  }
+}
+
+.ProductInfo-Attribute {
+  padding-bottom: 24px;
+  &:last-child {
+    padding-bottom: 38px;
   }
 }
