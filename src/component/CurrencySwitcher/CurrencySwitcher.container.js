@@ -58,7 +58,7 @@ export class CurrencySwitcherContainer extends PureComponent {
 }
 
 export const mapStateToProps = (state) => ({
-  currentCurrencyCode: state.currency,
+  currentCurrencyCode: state.CurrencyReducer.currency,
 });
 
 export const mapDispatchToProps = (dispatch) => ({

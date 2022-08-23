@@ -1,10 +1,11 @@
 /* eslint-disable operator-linebreak */
-import { createStore } from 'redux';
+import { createStore, combineReducers } from 'redux';
 
 import CurrencyReducer from './Currency/Currency.reducer';
+import CartReducer from './Cart/Cart.reducer';
 
 const store = createStore(
-  CurrencyReducer,
+  combineReducers({ CurrencyReducer, CartReducer }),
   process.env.NODE_ENV === 'development' &&
     window.__REDUX_DEVTOOLS_EXTENSION__ &&
     window.__REDUX_DEVTOOLS_EXTENSION__({

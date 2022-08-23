@@ -11,8 +11,3 @@ export const removeProductFromCart = (product) => ({
   type: REMOVE_PRODUCT_FROM_CART,
   product,
 });
-
-export const updateTotals = (cartData) => ({
-  type: UPDATE_TOTALS,
-  cartData,
-});

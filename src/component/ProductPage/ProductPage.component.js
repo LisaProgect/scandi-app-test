@@ -6,6 +6,7 @@ import { ProductType } from '../../type/ProductList';
 import ProductGallery from '../ProductGallery';
 import ProductAttributes from '../ProductAttributes';
 import ProductPrice from '../ProductPrice';
+import AddToCartButton from '../AddToCartButton';
 
 import './ProductPage.style.scss';
 
@@ -54,15 +55,13 @@ export class ProductPage extends PureComponent {
   }
 
   renderAddToCart() {
-    const {
-      product: { inStock },
-    } = this.props;
+    const { product, selectedAttributes } = this.props;
 
     return (
-      inStock && (
-        <button type="button" className="ProductInfo-AddToCart">
-          ADD TO CART
-        </button>
+      product.inStock && (
+        <AddToCartButton selectedAttributes={selectedAttributes} product={product}>
+          Add to cart
+        </AddToCartButton>
       )
     );
   }
