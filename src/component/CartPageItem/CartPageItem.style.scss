@@ -1,0 +1,103 @@
+.CartPageItem {
+  &-Gallery {
+    height: 288px;
+    display: flex;
+    width: 200px;
+    overflow: hidden;
+    &Button_prev {
+      bottom: 16px;
+      right: 48px;
+    }
+    &Button_next {
+      bottom: 16px;
+      right: 16px;
+    }
+  }
+  &-Image {
+    width: 200px;
+    height: 288px;
+    transform: translateX(var(--transform));
+    transition: all 400ms;
+    &Link {
+      display: block;
+    }
+  }
+  &-Wrapper {
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 0;
+    &:last-child {
+      border-bottom: 1px solid #e5e5e5;
+    }
+  }
+  &-Title {
+    display: flex;
+    font-size: 30px;
+    line-height: 27px;
+    flex-direction: column;
+    padding-bottom: 20px;
+  }
+  &-Brand {
+    font-weight: 600;
+    padding-bottom: 16px;
+  }
+  &-Name {
+    font-weight: 400;
+  }
+  &-Price {
+    font-size: 24px;
+    font-weight: 700;
+    display: block;
+    padding-bottom: 20px;
+  }
+  &-Attribute {
+    padding-bottom: 16px;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+  &-Buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 24px;
+  }
+  &-ButtonAmount {
+    font-weight: 500;
+    font-size: 24px;
+  }
+  &-Button {
+    width: 45px;
+    height: 45px;
+    background-color: var(--white-color);
+    border: 1px solid var(--paragraph-font-color);
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 1px;
+      background-color: var(--paragraph-font-color);
+      width: 15px;
+    }
+    &_add {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 1px;
+        background-color: var(--paragraph-font-color);
+        height: 15px;
+      }
+    }
+  }
+  &-ActionWrapper {
+    display: flex;
+  }
+}

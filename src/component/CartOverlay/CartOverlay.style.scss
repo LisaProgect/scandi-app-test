@@ -1,0 +1,107 @@
+$padding-bottom: 32px;
+
+.Header-MinicartWrapper_isVisible {
+  position: fixed;
+  left: 0px;
+  top: var(--header-total-height);
+  height: 100vh;
+  width: 100vw;
+  background: rgba(57, 55, 72, 0.22);
+  z-index: 10;
+}
+
+.Header-MiniCartWrapper {
+  transition: background-color, 0.2s;
+}
+
+.Header-MiniCartOutside {
+  width: 100%;
+  height: 100%;
+}
+
+.CartOverlay {
+  position: fixed;
+  top: var(--header-total-height);
+  right: 10%;
+  width: 325px;
+  max-height: 85vh;
+  overflow-y: scroll;
+  border-style: none;
+  display: block;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: #fff;
+  padding: $padding-bottom 16px;
+
+  &-Wrapper {
+    height: 100%;
+    overflow: hidden;
+  }
+  &-Title {
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 500;
+    padding-bottom: $padding-bottom;
+    &_bold {
+      font-weight: 700;
+    }
+  }
+  &-Items {
+    padding-bottom: $padding-bottom;
+  }
+  &-TotalPrice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    height: 28px;
+    margin-bottom: $padding-bottom;
+    &_name {
+      align-self: end;
+    }
+    &_price {
+      padding-right: 4px;
+    }
+  }
+  &-ActionButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-ActionButtonLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--paragraph-font-color);
+    font-weight: 600;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-size: 14px;
+    height: 43px;
+    width: 140px;
+    background-color: var(--white-color);
+    &_green {
+      background-color: var(--accent-color);
+      border: none;
+      color: var(--white-color);
+    }
+  }
+}
+
+.CartOverlay::-webkit-scrollbar {
+  display: none;
+}
+
+.CartOverlay-CountItems {
+  text-align: left;
+  font-size: var(--paragraph-font-size);
+  font-family: 'RalewayMedium';
+  font-weight: 500;
+  line-height: 1;
+  padding-bottom: $padding-bottom;
+}
+
+.CartOverlay-CountName {
+  font-weight: 700;
+  font-family: 'RalewayBold';
+}

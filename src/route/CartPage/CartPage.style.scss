@@ -1,0 +1,53 @@
+.CartPage {
+  &-Title {
+    text-transform: uppercase;
+    margin-top: calc(80px + var(--header-total-height));
+    margin-bottom: 55px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  &-OrderInfo {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    &-InfoItemValue {
+      font-weight: 700;
+    }
+  }
+  &-InfoItem {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.5;
+    padding-bottom: 8px;
+    display: flex;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+  &-TotalPrice {
+    font-weight: 500;
+  }
+  &-Price {
+    font-size: 24px;
+    line-height: 1;
+  }
+  &-InfoItemValue {
+    font-size: 24px;
+    font-weight: 700;
+  }
+  &-InfoItemLabel {
+    width: 105px;
+  }
+  &-OrderButton {
+    display: flex;
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    width: 279px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 14px;
+    height: 43px;
+    justify-content: center;
+    align-items: center;
+  }
+}

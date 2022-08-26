@@ -30,13 +30,19 @@ export class ProductGalleryContainer extends PureComponent {
   };
 
   componentDidMount() {
-    const { gallery } = this.props;
-
-    const [firstImage] = gallery;
-    this.setState({ currentSlider: firstImage || '' });
+    this._getFirstImage();
   }
 
   componentDidUpdate(prevProps, prevState) {
+    const [prevFirstImage] = prevProps.gallery;
+    const { gallery } = this.props;
+    const [nextFirstImage] = gallery;
+
+    if (prevFirstImage !== nextFirstImage) {
+      this._getFirstImage();
+      this.updateButtonsShow();
+    }
+
     const {
       heightThumbnailImage: prevHeightThumbnailImage,
       offsetThumbnail: prevOffsetThumbnail,
@@ -54,6 +60,13 @@ export class ProductGalleryContainer extends PureComponent {
 
   onActiveImageChange(pathImage) {
     this.setState({ currentSlider: pathImage });
+  }
+
+  _getFirstImage() {
+    const { gallery } = this.props;
+
+    const [firstImage] = gallery;
+    this.setState({ currentSlider: firstImage || '' });
   }
 
   _getNumberThumbnails() {

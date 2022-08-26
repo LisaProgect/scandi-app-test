@@ -6,7 +6,7 @@ import { ProductType } from '../../type/ProductList';
 import ProductGallery from '../ProductGallery';
 import ProductAttributes from '../ProductAttributes';
 import ProductPrice from '../ProductPrice';
-import AddToCartButton from '../AddToCartButton';
+import UpdateCartButton from '../UpdateCartButton';
 
 import './ProductPage.style.scss';
 
@@ -59,9 +59,13 @@ export class ProductPage extends PureComponent {
 
     return (
       product.inStock && (
-        <AddToCartButton selectedAttributes={selectedAttributes} product={product}>
+        <UpdateCartButton
+          selectedAttributes={selectedAttributes}
+          product={product}
+          className="ProductInfo-AddToCart"
+        >
           Add to cart
-        </AddToCartButton>
+        </UpdateCartButton>
       )
     );
   }

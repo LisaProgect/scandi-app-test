@@ -1,10 +1,24 @@
 import React, { PureComponent } from 'react';
+import { Query } from '@apollo/client/react/components';
 
-/* import { Logo, Arrow, EmptyCart } from '../Icons'; */
 import Header from './Header.component';
+import Loader from '../Loader';
+import GET_QUERY_MENU from '../../query/Menu.query';
 
-export default class HeaderContainer extends PureComponent {
+export class HeaderContainer extends PureComponent {
   render() {
-    return <Header />;
+    return (
+      <Query query={GET_QUERY_MENU}>
+        {({ data, loading, error }) => {
+          if (error) return 'error';
+          if (loading) return <Loader isLoading={loading} />;
+
+          const { currencies, categories } = data;
+          return <Header currencies={currencies} categories={categories} />;
+        }}
+      </Query>
+    );
   }
 }
+
+export default HeaderContainer;

@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import WithQuery from '../../util/WithQuery';
 import CurrencyDispatcher from '../../store/Currency/Currency.dispatcher';
 import { CurrencyListType } from '../../type/Currency';
 
@@ -39,13 +38,11 @@ export class CurrencySwitcherContainer extends PureComponent {
 
     setCurrency(symbol);
 
-    this.setState({ currentCurrencySymbol: symbol });
+    this.setState({ currentCurrencySymbol: symbol, isOpened: false });
   }
 
   onCurrencySwitcherClick() {
-    const { isOpened } = this.state;
-
-    this.setState({ isOpened: !isOpened });
+    this.setState((state) => ({ isOpened: !state.isOpened }));
   }
 
   onCurrencySwitcherOutsideClick() {
@@ -65,7 +62,4 @@ export const mapDispatchToProps = (dispatch) => ({
   setCurrency: (currency) => CurrencyDispatcher.addCurrency(dispatch, currency),
 });
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(WithQuery.withCurrencies(CurrencySwitcherContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencySwitcherContainer);

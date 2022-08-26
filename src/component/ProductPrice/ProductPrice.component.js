@@ -9,20 +9,25 @@ export class ProductPrice extends PureComponent {
     amount: PropTypes.number.isRequired,
     symbol: PropTypes.string.isRequired,
     className: PropTypes.string,
+    isTax: PropTypes.bool,
+    tax: PropTypes.number.isRequired,
   };
 
   static defaultProps = {
     className: '',
+    isTax: false,
   };
 
   render() {
-    const { amount, symbol, className } = this.props;
+    const { amount, symbol, className, tax, isTax } = this.props;
 
     const productPriceClass = classNames('ProductPrice', {
       [className]: className,
     });
 
-    return <span className={productPriceClass}>{`${symbol}${amount}`}</span>;
+    return (
+      <span className={productPriceClass}>{`${symbol}${isTax ? tax : amount}`}</span>
+    );
   }
 }
 

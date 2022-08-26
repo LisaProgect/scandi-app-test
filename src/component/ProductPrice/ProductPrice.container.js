@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { PricesType } from '../../type/ProductList';
 import ProductPrice from './ProductPrice.component';
-import { getCurrentPrice } from '../../util/Price';
+import { getCurrentPrice, getTax } from '../../util/Price';
 
 export class ProductPriceContainer extends PureComponent {
   static propTypes = {
@@ -18,9 +18,12 @@ export class ProductPriceContainer extends PureComponent {
       currency: { symbol },
     } = this._getCurrentPrice();
 
+    const tax = getTax(amount);
+
     return {
       amount,
       symbol,
+      tax,
     };
   };
 

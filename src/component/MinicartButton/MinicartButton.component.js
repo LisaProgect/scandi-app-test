@@ -47,11 +47,16 @@ export class MinicartButton extends PureComponent {
 
   renderCounterProducts() {
     const { miniCartItemsCount } = this.props;
-    return <span className="MinicartButton-CounterProducts">{miniCartItemsCount}</span>;
+
+    return (
+      !!miniCartItemsCount && (
+        <span className="MinicartButton-CounterProducts">{miniCartItemsCount}</span>
+      )
+    );
   }
 
   renderWrapper() {
-    const { miniCartItemsCount, onMinicartButtonClick, colorMiniCart } = this.props;
+    const { onMinicartButtonClick, colorMiniCart } = this.props;
 
     const miniCartClassNames = classnames('MinicartButtonWrapper', {
       'MinicartButton-Color': colorMiniCart,
@@ -65,7 +70,7 @@ export class MinicartButton extends PureComponent {
         onClick={onMinicartButtonClick}
       >
         {this.renderSVGMinicartButton()}
-        {miniCartItemsCount && this.renderCounterProducts()}
+        {this.renderCounterProducts()}
       </button>
     );
   }

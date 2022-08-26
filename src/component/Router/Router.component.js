@@ -1,10 +1,10 @@
 import { lazy, PureComponent, Suspense } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
-import Header from '../Header';
 import SomethingWentWrong from '../../route/SomethingWentWrong';
 import Loader from '../Loader';
 
+export const Header = lazy(() => import('../Header'));
 export const CartPage = lazy(() => import('../../route/CartPage'));
 export const ProductPage = lazy(() => import('../../route/ProductDescriptionPage'));
 export const ProductListing = lazy(() => import('../../route/ProductListingPage'));

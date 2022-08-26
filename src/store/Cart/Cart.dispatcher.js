@@ -1,4 +1,8 @@
-import { addProductToCart, removeProductFromCart } from './Cart.action';
+import {
+  addProductToCart,
+  removeProductFromCart,
+  removeAllProductsFromCart,
+} from './Cart.action';
 
 export class CartDispatcher {
   addProductToCart(dispatch, product) {
@@ -13,25 +17,23 @@ export class CartDispatcher {
     dispatch(removeProductFromCart(currentProduct));
   }
 
+  removeAllProductsFromCart(dispatch) {
+    dispatch(removeAllProductsFromCart());
+  }
+
   _getNormalizeProduct(product, value) {
     const { id, attributes, brand, gallery, name, prices, selectedAttributes } = product;
 
-    const currentSelectedAttributes = {
-      items: selectedAttributes,
-      count: value,
-    };
-
-    const normalizeProduct = {
+    return {
       id,
       attributes,
       brand,
       gallery,
       name,
+      qty: value,
       prices,
-      selectedAttributes: currentSelectedAttributes,
+      selectedAttributes,
     };
-
-    return normalizeProduct;
   }
 }
 

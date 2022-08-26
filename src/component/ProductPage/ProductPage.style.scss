@@ -59,6 +59,11 @@ $title-line-height: 27px;
     font-weight: 600;
     color: var(--white-color);
     width: 100%;
+    padding: {
+      top: 16px;
+      bottom: 16px;
+    }
+    margin-bottom: 40px;
   }
 }
 

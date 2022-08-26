@@ -58,13 +58,13 @@ $width-text-small: 24px;
       }
     }
     &__small {
+      padding-bottom: 0;
       .ProductAttribute {
         &-Label {
           font-family: 'Raleway';
           font-weight: 400;
           font-style: 14px;
           line-height: 16px;
-          text-transform: uppercase;
         }
       }
       .ProductAttributeItem {

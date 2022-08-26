@@ -8,12 +8,14 @@ export class ClickOutside extends PureComponent {
     onClick: PropTypes.func,
     show: PropTypes.bool,
     children: ChildrenType,
+    className: PropTypes.string,
   };
 
   static defaultProps = {
     onClick: () => {},
     children: [],
     show: false,
+    className: '',
   };
 
   constructor(props) {
@@ -40,13 +42,17 @@ export class ClickOutside extends PureComponent {
   };
 
   render() {
-    const { children, show } = this.props;
+    const { children, show, className } = this.props;
 
     if (!show) {
       return null;
     }
 
-    return <div ref={this.ref}>{children}</div>;
+    return (
+      <div className={className} ref={this.ref}>
+        {children}
+      </div>
+    );
   }
 }
 

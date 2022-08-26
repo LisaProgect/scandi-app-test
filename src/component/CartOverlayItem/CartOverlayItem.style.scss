@@ -1,0 +1,79 @@
+.CartOverlayItem {
+  display: grid;
+  grid-column-gap: 8px;
+  grid-template-columns: 164px 121px;
+  padding-bottom: 40px;
+  &:last-child {
+    padding-bottom: 0;
+  }
+  &-Content {
+    display: grid;
+    grid-template-columns: 136px 24px;
+    grid-column-gap: 4px;
+  }
+  &-Info {
+    display: flex;
+    flex-direction: column;
+  }
+  &-Title {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    font-weight: 300;
+  }
+  &-ImageWrapper {
+    height: 100%;
+  }
+  &-Image {
+    height: 100%;
+  }
+  &-Price {
+    padding: 4px 0 8px 0;
+  }
+  &-Attribute {
+    padding-bottom: 8px;
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+  &-Buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &-Button {
+    display: block;
+    position: relative;
+    width: 24px;
+    height: 24px;
+    border: 1px solid var(--paragraph-font-color);
+    &::after {
+      content: '';
+      height: 1px;
+      position: absolute;
+      width: 12px;
+      background-color: var(--paragraph-font-color);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    &_add {
+      &::before {
+        content: '';
+        width: 1px;
+        position: absolute;
+        height: 12px;
+        background-color: var(--paragraph-font-color);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    &Amount {
+      font-weight: 500;
+      font-size: 16px;
+      font-family: 'Raleway';
+    }
+  }
+}
