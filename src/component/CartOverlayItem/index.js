@@ -1,1 +1,1 @@
-export { default } from './CartOverlayItem.containe';
+export { default } from './CartOverlayItem.component';

@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
 
+import './Menu.style.scss';
+
 class Menu extends PureComponent {
   static propTypes = {
     categories: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
