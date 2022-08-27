@@ -1,4 +1,4 @@
-import {
+/* import {
   addProductToCart,
   removeProductFromCart,
   removeAllProductsFromCart,
@@ -38,3 +38,4 @@ export class CartDispatcher {
 }
 
 export default new CartDispatcher();
+ */

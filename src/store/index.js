@@ -1,16 +1,8 @@
-/* eslint-disable operator-linebreak */
-import { createStore, combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 
-import CurrencyReducer from './Currency/Currency.reducer';
-import CartReducer from './Cart/Cart.reducer';
+import currencyReducer from './slices/currencySlice';
+import CartReducer from './slices/cartSlice';
 
-const store = createStore(
-  combineReducers({ CurrencyReducer, CartReducer }),
-  process.env.NODE_ENV === 'development' &&
-    window.__REDUX_DEVTOOLS_EXTENSION__ &&
-    window.__REDUX_DEVTOOLS_EXTENSION__({
-      trace: true,
-    }),
-);
-
-export default store;
+export default configureStore({
+  reducer: { currency: currencyReducer, cart: CartReducer },
+});

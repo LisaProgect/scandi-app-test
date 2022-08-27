@@ -1,12 +1,7 @@
-/* eslint-disable consistent-return */
+import { createSlice } from '@reduxjs/toolkit';
 import BrowserDatabase from '../../util/BrowserDatabase';
 import { getTotalPrice } from '../../util/Price';
 import { getQtyProductsInCart, updateCartItems } from '../../util/Cart';
-import {
-  ADD_PRODUCT_TO_CART,
-  REMOVE_ALL_PRODUCTS_FROM_CART,
-  REMOVE_PRODUCT_FROM_CART,
-} from './Cart.action';
 
 export const CART_LIST = 'cart_list';
 export const CART_TOTAL = 'cart_total';
@@ -14,6 +9,21 @@ export const CART_TOTAL = 'cart_total';
 const initialState = {
   cartList: BrowserDatabase.getItem(CART_LIST) || [],
   cartTotal: BrowserDatabase.getItem(CART_TOTAL) || { prices: [], qtyProductInCart: 0 },
+};
+
+const getNormalizeProduct = (product, value) => {
+  const { id, attributes, brand, gallery, name, prices, selectedAttributes } = product;
+
+  return {
+    id,
+    attributes,
+    brand,
+    gallery,
+    name,
+    qty: value,
+    prices,
+    selectedAttributes,
+  };
 };
 
 const updateProductCart = (state, product) => {
@@ -30,20 +40,21 @@ const updateProductCart = (state, product) => {
   return { cartList: updateCartList, cartTotal };
 };
 
-export default (state = initialState, actions) => {
-  const { type, payload } = actions;
+const cartSlice = createSlice({
+  name: 'cart',
+  initialState,
+  reducers: {
+    addProductToCart: (state, action) => {
+      const normalizeProduct = getNormalizeProduct(action.payload);
+      const updateState = updateProductCart(state, normalizeProduct);
+      state.cartList.push(updateState);
+      const product = state.cartList.find(({ id }) => updateState.id === id);
+      console.log(product);
+    },
+    removeProductFromCart: () => {},
+  },
+});
 
-  switch (type) {
-    case ADD_PRODUCT_TO_CART:
-      return updateProductCart(state, payload);
+export const { addProductToCart, removeProductFromCart } = cartSlice.actions;
 
-    case REMOVE_PRODUCT_FROM_CART:
-      return updateProductCart(state, payload);
-
-    case REMOVE_ALL_PRODUCTS_FROM_CART:
-      return [];
-
-    default:
-      return state;
-  }
-};
+export default cartSlice.reducer;

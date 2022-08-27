@@ -38,7 +38,7 @@ export class ProductPriceContainer extends PureComponent {
 }
 
 export const mapStateToProps = (state) => ({
-  currentCurrencySymbol: state.CurrencyReducer.currency,
+  currentCurrencySymbol: state.currency.currency,
 });
 
 export default connect(mapStateToProps)(ProductPriceContainer);

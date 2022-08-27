@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import UpdateCartButton from './UpdateCartButton.component';
 import { ProductType } from '../../type/ProductList';
-import CartDispatcher from '../../store/Cart/Cart.dispatcher';
+import { addProductToCart, removeProductFromCart } from '../../store/slices/cartSlice';
 import { ADD_TO_CART, REMOVE_FROM_CART } from './UpdateCartButton.config';
 
 export class UpdateCartButtonContainer extends PureComponent {
@@ -57,9 +57,9 @@ export class UpdateCartButtonContainer extends PureComponent {
 
 export const mapStateToProps = () => ({});
 
-export const mapDispatchToProps = (dispatch) => ({
-  addToCart: (product) => CartDispatcher.addProductToCart(dispatch, product),
-  removeFromCart: (product) => CartDispatcher.removeProductFromCart(dispatch, product),
-});
+export const mapDispatchToProps = {
+  addToCart: addProductToCart,
+  removeFromCart: removeProductFromCart,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateCartButtonContainer);
