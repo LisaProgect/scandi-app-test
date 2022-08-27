@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 
 import UpdateCartButton from './UpdateCartButton.component';
 import { ProductType } from '../../type/ProductList';
-import { addProductToCart, removeProductFromCart } from '../../store/slices/cartSlice';
+import { updateCart } from '../../store/slices/cartSlice';
 import { ADD_TO_CART, REMOVE_FROM_CART } from './UpdateCartButton.config';
 
 export class UpdateCartButtonContainer extends PureComponent {
   static propTypes = {
     product: ProductType.isRequired,
     selectedAttributes: PropTypes.shape({}).isRequired,
-    addToCart: PropTypes.func.isRequired,
+    updateCart: PropTypes.func.isRequired,
     removeFromCart: PropTypes.func.isRequired,
     typeButton: PropTypes.string,
   };
@@ -31,13 +31,17 @@ export class UpdateCartButtonContainer extends PureComponent {
   }
 
   getCorrectAction() {
-    const { product, selectedAttributes, addToCart, typeButton, removeFromCart } =
-      this.props;
+    const {
+      product,
+      selectedAttributes,
+      updateCart: updateProductCart,
+      typeButton,
+    } = this.props;
     if (typeButton === ADD_TO_CART) {
-      addToCart({ ...product, selectedAttributes });
+      updateProductCart({ data: { ...product, selectedAttributes }, value: 1 });
     }
     if (typeButton === REMOVE_FROM_CART) {
-      removeFromCart({ ...product, selectedAttributes });
+      updateProductCart({ data: { ...product, selectedAttributes }, value: -1 });
     }
   }
 
@@ -57,9 +61,6 @@ export class UpdateCartButtonContainer extends PureComponent {
 
 export const mapStateToProps = () => ({});
 
-export const mapDispatchToProps = {
-  addToCart: addProductToCart,
-  removeFromCart: removeProductFromCart,
-};
+export const mapDispatchToProps = { updateCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateCartButtonContainer);

@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, current } from '@reduxjs/toolkit';
 import BrowserDatabase from '../../util/BrowserDatabase';
 import { getTotalPrice } from '../../util/Price';
 import { getQtyProductsInCart, updateCartItems } from '../../util/Cart';
@@ -44,17 +44,17 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addProductToCart: (state, action) => {
-      const normalizeProduct = getNormalizeProduct(action.payload);
-      const updateState = updateProductCart(state, normalizeProduct);
-      state.cartList.push(updateState);
-      const product = state.cartList.find(({ id }) => updateState.id === id);
-      console.log(product);
+    updateCart: (state, action) => {
+      const normalizeProduct = getNormalizeProduct(
+        action.payload.data,
+        action.payload.value,
+      );
+      const updateState = updateProductCart(current(state), normalizeProduct);
+      return { ...state, ...updateState };
     },
-    removeProductFromCart: () => {},
   },
 });
 
-export const { addProductToCart, removeProductFromCart } = cartSlice.actions;
+export const { updateCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

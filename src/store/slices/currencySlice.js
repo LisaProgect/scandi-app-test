@@ -14,7 +14,6 @@ const currencySlice = createSlice({
   reducers: {
     changeCurrency: (state, { payload }) => {
       const currentCurrencySymbol = BrowserDatabase.getItem(CURRENT_CURRENCY_ITEM);
-
       if (currentCurrencySymbol !== payload) {
         BrowserDatabase.setItem(payload, CURRENT_CURRENCY_ITEM);
         state.currency = payload;
