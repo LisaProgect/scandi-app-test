@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
+import classNames from 'classnames';
 
 import './SliderButton.style.scss';
 
@@ -47,7 +48,7 @@ export class SliderButton extends PureComponent {
         <button
           type="button"
           onClick={onClickButton}
-          className={`SliderButton ${className}`}
+          className={classNames('SliderButton', { [className]: className })}
         >
           {this.renderArrow()}
         </button>

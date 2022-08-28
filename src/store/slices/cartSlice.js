@@ -52,9 +52,15 @@ const cartSlice = createSlice({
       const updateState = updateProductCart(current(state), normalizeProduct);
       return { ...state, ...updateState };
     },
+    resetCart: (state) => {
+      BrowserDatabase.deleteItem(CART_LIST);
+      BrowserDatabase.deleteItem(CART_TOTAL);
+      state.cartList = [];
+      state.cartTotal = { prices: [], qtyProductInCart: 0 };
+    },
   },
 });
 
-export const { updateCart } = cartSlice.actions;
+export const { updateCart, resetCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -19,6 +19,7 @@ export class CartOverlay extends PureComponent {
     onCartOutsideClick: PropTypes.func.isRequired,
     isOpenedCart: PropTypes.bool.isRequired,
     totalPrice: PropTypes.arrayOf(PropTypes.shape({})),
+    onOrderClick: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -38,20 +39,20 @@ export class CartOverlay extends PureComponent {
   }
 
   renderActionButtons() {
-    const { onCartClick } = this.props;
+    const { onCartClick, onOrderClick } = this.props;
 
     return (
       <div className="CartOverlay-ActionButtons">
         <Link to="/cart" onClick={onCartClick} className="CartOverlay-ActionButtonLink">
           View bag
         </Link>
-        <Link
-          to="/cart"
-          onClick={onCartClick}
+        <button
+          type="button"
+          onClick={onOrderClick}
           className="CartOverlay-ActionButtonLink CartOverlay-ActionButtonLink_green"
         >
           CHECK OUT
-        </Link>
+        </button>
       </div>
     );
   }
@@ -92,6 +93,21 @@ export class CartOverlay extends PureComponent {
     );
   }
 
+  renderContent() {
+    const { cartList } = this.props;
+
+    return !cartList.length ? (
+      <p>Empty Cart</p>
+    ) : (
+      <>
+        {this.renderTitle()}
+        {this.renderItems()}
+        {this.renderTotalPrice()}
+        {this.renderActionButtons()}
+      </>
+    );
+  }
+
   renderContainer() {
     const { onCartOutsideClick, isOpenedCart } = this.props;
     const miniCartClassName = classNames('Header-MiniCartWrapper', {
@@ -104,12 +120,7 @@ export class CartOverlay extends PureComponent {
         <div className={miniCartClassName}>
           <ClickOutside onClick={onCartOutsideClick} show={isOpenedCart}>
             <div className="CartOverlay">
-              <div className="CartOverlay-Wrapper">
-              {this.renderTitle()}
-              {this.renderItems()}
-              {this.renderTotalPrice()}
-              {this.renderActionButtons()}
-              </div>
+              <div className="CartOverlay-Wrapper">{this.renderContent()}</div>
             </div>
           </ClickOutside>
         </div>

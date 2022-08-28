@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import UpdateCartButton from './UpdateCartButton.component';
 import { ProductType } from '../../type/ProductList';
 import { updateCart } from '../../store/slices/cartSlice';
+import { showMessage, hideMessage } from '../../store/slices/messageSlice';
 import { ADD_TO_CART, REMOVE_FROM_CART } from './UpdateCartButton.config';
 
 export class UpdateCartButtonContainer extends PureComponent {
@@ -12,8 +13,9 @@ export class UpdateCartButtonContainer extends PureComponent {
     product: ProductType.isRequired,
     selectedAttributes: PropTypes.shape({}).isRequired,
     updateCart: PropTypes.func.isRequired,
-    removeFromCart: PropTypes.func.isRequired,
     typeButton: PropTypes.string,
+    showMessage: PropTypes.func.isRequired,
+    hideMessage: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -25,8 +27,17 @@ export class UpdateCartButtonContainer extends PureComponent {
   };
 
   onClickButton() {
+    const { showMessage: showCurrentMessage, hideMessage: hideCurrentMessage } =
+      this.props;
     if (this.validateAttributes()) {
+      hideCurrentMessage();
       this.getCorrectAction();
+    } else {
+      const message = {
+        type: 'error',
+        text: 'Please select all attributes',
+      };
+      showCurrentMessage(message);
     }
   }
 
@@ -61,6 +72,6 @@ export class UpdateCartButtonContainer extends PureComponent {
 
 export const mapStateToProps = () => ({});
 
-export const mapDispatchToProps = { updateCart };
+export const mapDispatchToProps = { updateCart, showMessage, hideMessage };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UpdateCartButtonContainer);

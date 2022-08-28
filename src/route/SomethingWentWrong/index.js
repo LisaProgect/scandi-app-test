@@ -1,1 +1,1 @@
-export { default } from './SomethingWentWrong.container';
+export { default } from './SomethingWentWrong.component';

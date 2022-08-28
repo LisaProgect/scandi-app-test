@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
+import classNames from 'classnames';
 
 import { RefType } from '../../type/Common';
 
@@ -28,9 +29,10 @@ export class Image extends PureComponent {
 
   render() {
     const { className, imgRef } = this.props;
+    const imageClassName = classNames('Image', { [className]: className });
 
     return (
-      <div className={`Image ${className}`} ref={imgRef}>
+      <div className={imageClassName} ref={imgRef}>
         {this.renderImage()}
       </div>
     );

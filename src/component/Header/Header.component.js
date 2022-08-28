@@ -5,6 +5,7 @@ import Menu from '../Menu';
 import CurrencySwitcher from '../CurrencySwitcher';
 import Logo from '../Logo';
 import CartOverlay from '../CartOverlay';
+import Message from '../Message';
 import { CurrencyListType } from '../../type/Currency';
 
 import './Header.style.scss';
@@ -43,6 +44,7 @@ export class Header extends PureComponent {
               {this.renderCartOverlay()}
             </div>
           </nav>
+          <Message />
         </header>
       </section>
     );

@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 
 import CartType from '../../type/Cart';
 import CartOverlay from './CartOverlay.component';
+import { resetCart } from '../../store/slices/cartSlice';
 
 export class CartOverlayContainer extends PureComponent {
   static propTypes = {
     cartList: PropTypes.arrayOf(CartType),
+    resetCart: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -21,7 +23,14 @@ export class CartOverlayContainer extends PureComponent {
   containerFunctions = {
     onCartClick: this.onCartClick.bind(this),
     onCartOutsideClick: this.onCartOutsideClick.bind(this),
+    onOrderClick: this.onOrderClick.bind(this),
   };
+
+  onOrderClick() {
+    const { resetCart: handelResetCart } = this.props;
+
+    handelResetCart();
+  }
 
   onCartClick() {
     this.setState((state) => ({
@@ -46,6 +55,6 @@ export const mapStateToProps = (state) => ({
   totalPrice: state.cart.cartTotal.prices,
 });
 
-export const mapDispatchToProps = {};
+export const mapDispatchToProps = { resetCart };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartOverlayContainer);

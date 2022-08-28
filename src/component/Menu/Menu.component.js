@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 
 import './Menu.style.scss';
 
@@ -15,7 +16,7 @@ class Menu extends PureComponent {
         <NavLink
           to={`/${name}`}
           className={({ isActive }) =>
-            `${isActive ? 'Menu-Link Menu-LinkActive' : 'Menu-Link'}`
+            classNames('Menu-Link', { 'Menu-LinkActive': isActive })
           }
         >
           {name}

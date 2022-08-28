@@ -14,6 +14,7 @@ export class CartPage extends PureComponent {
     cartList: PropTypes.arrayOf(CartType),
     qtyProductInCart: PropTypes.number.isRequired,
     totalPrice: PropTypes.arrayOf(PropTypes.shape({})),
+    onOrderClick: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -62,10 +63,13 @@ export class CartPage extends PureComponent {
   }
 
   renderOrderButton() {
+    const { onOrderClick, cartList } = this.props;
     return (
-      <button type="button" className="CartPage-OrderButton">
-        Order
-      </button>
+      !!cartList.length && (
+        <button type="button" className="CartPage-OrderButton" onClick={onOrderClick}>
+          Order
+        </button>
+      )
     );
   }
 
