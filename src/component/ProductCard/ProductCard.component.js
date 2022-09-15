@@ -7,6 +7,7 @@ import { PricesType } from '../../type/ProductList';
 import ProductPrice from '../ProductPrice';
 import Image from '../Image';
 import MinicartButton from '../MinicartButton';
+import UpdateCartButton from '../UpdateCartButton';
 
 import './ProductCard.style.scss';
 
@@ -18,15 +19,22 @@ export class ProductCard extends PureComponent {
     prices: PropTypes.arrayOf(PricesType).isRequired,
     srcImg: PropTypes.string.isRequired,
     brand: PropTypes.string.isRequired,
+    firstAttribute: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    firstAttribute: {},
   };
 
   renderButtonCart() {
-    const { inStock } = this.props;
+    const { inStock, firstAttribute } = this.props;
 
     if (inStock) {
       return (
         <div className="ProductCard-Button">
-          <MinicartButton colorMiniCart sizeSVG={24} />
+          <UpdateCartButton product={this.props} selectedAttributes={firstAttribute}>
+            <MinicartButton />
+          </UpdateCartButton>
         </div>
       );
     }
@@ -42,7 +50,6 @@ export class ProductCard extends PureComponent {
 
     return (
       <div className={productContentClass}>
-        {this.renderButtonCart()}
         <p className="ProductCard-Name">
           {brand} {name}
         </p>
@@ -84,6 +91,7 @@ export class ProductCard extends PureComponent {
           {this.renderProductImage()}
           {this.renderProductContent()}
         </Link>
+        {this.renderButtonCart()}
         <Outlet />
       </li>
     );

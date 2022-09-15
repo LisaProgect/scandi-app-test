@@ -1,1 +1,1 @@
-export { default } from './MinicartButton.container';
+export { default } from './MinicartButton.component';

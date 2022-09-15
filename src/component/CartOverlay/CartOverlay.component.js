@@ -34,6 +34,7 @@ export class CartOverlay extends PureComponent {
       <MinicartButton
         onMinicartButtonClick={onCartClick}
         miniCartItemsCount={qtyProductInCart}
+        isButton
       />
     );
   }

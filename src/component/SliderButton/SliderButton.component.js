@@ -9,21 +9,19 @@ export class SliderButton extends PureComponent {
     isShow: PropTypes.bool,
     onClickButton: PropTypes.func,
     className: PropTypes.string,
-    angelRotation: PropTypes.number,
+    rotation: PropTypes.string,
   };
 
   static defaultProps = {
     isShow: true,
     onClickButton: () => {},
     className: '',
-    angelRotation: 0,
+    rotation: 'Up',
   };
 
   renderArrow() {
-    const { angelRotation } = this.props;
     return (
       <svg
-        style={{ '--angle-rotation': `${angelRotation}deg` }}
         width="8"
         height="14"
         viewBox="0 0 8 14"
@@ -42,13 +40,16 @@ export class SliderButton extends PureComponent {
   }
 
   renderButton() {
-    const { isShow, onClickButton, className } = this.props;
+    const { isShow, onClickButton, className, rotation } = this.props;
+
     return (
       isShow && (
         <button
           type="button"
           onClick={onClickButton}
-          className={classNames('SliderButton', { [className]: className })}
+          className={classNames('SliderButton', `SliderRotate-${rotation}`, {
+            [className]: className,
+          })}
         >
           {this.renderArrow()}
         </button>

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import Image from '../Image';
 import SliderButton from '../SliderButton';
+import CSS from '../../util/CSS';
+import { ANIMATION_SPEED } from './ProductGallery.config';
 
 import './ProductGallery.style.scss';
 
@@ -17,6 +19,7 @@ export class ProductGallery extends PureComponent {
     isButtonDownShow: PropTypes.bool.isRequired,
     onActiveImageChange: PropTypes.func.isRequired,
     currentSlider: PropTypes.string.isRequired,
+    inStock: PropTypes.bool.isRequired,
   };
 
   static defaultProps = {
@@ -65,14 +68,14 @@ export class ProductGallery extends PureComponent {
       <>
         <SliderButton
           onClickButton={onClickUp}
-          angelRotation={90}
+          rotation="Up"
           className="SliderButton__up"
           isShow={isButtonUpShow}
         />
         {children}
         <SliderButton
           onClickButton={onClickDown}
-          angelRotation={-90}
+          rotation="Down"
           className="SliderButton__down"
           isShow={isButtonDownShow}
         />
@@ -80,10 +83,22 @@ export class ProductGallery extends PureComponent {
     );
   }
 
+  renderOverlayStock() {
+    const { inStock } = this.props;
+    return (
+      !inStock && (
+        <div className="Slider-Overlay">
+          <p className="Slider-OverlayTitle">OUT OF STOCK</p>
+        </div>
+      )
+    );
+  }
+
   renderSlider() {
     const { currentSlider } = this.props;
     return (
       <div className="Slider">
+        {this.renderOverlayStock()}
         <Image src={currentSlider} className="Slider-Image" />
       </div>
     );
@@ -91,18 +106,14 @@ export class ProductGallery extends PureComponent {
 
   renderThumbnails() {
     const { gallery, offsetThumbnail } = this.props;
+    CSS.setVariable(this.navigationSliderRef, 'translateY', `${-offsetThumbnail}px`);
+    CSS.setVariable(this.navigationSliderRef, 'animation-speed', ANIMATION_SPEED);
 
     return (
       <div className="NavigationSlider-Thumbnails">
         {this.renderThumbnailButtons(
           <div className="NavigationSlider-Wrapper" ref={this.navigationSliderRef}>
-            <div
-              className="NavigationSlider"
-              style={{
-                '--translateY': `${-offsetThumbnail}px`,
-                '--animation-speed': '400ms',
-              }}
-            >
+            <div className="NavigationSlider">
               {gallery && gallery.map(this.renderThumbnail)}
             </div>
           </div>,

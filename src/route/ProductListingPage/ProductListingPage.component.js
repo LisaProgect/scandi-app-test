@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
-import {ProductItemsType} from '../../type/ProductList';
+import { ProductItemsType } from '../../type/ProductList';
 import ContentWrapper from '../../component/ContentWrapper';
 import ProductList from '../../component/ProductList';
 

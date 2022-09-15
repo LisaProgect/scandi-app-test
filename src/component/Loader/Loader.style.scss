@@ -8,6 +8,7 @@
   animation: loading-spinner 2s linear infinite;
   margin: 0 auto;
   box-sizing: border-box;
+  font-size: var(--font-size);
 }
 
 @keyframes loading-spinner {

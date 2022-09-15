@@ -9,6 +9,7 @@ import UpdateCartButton from '../UpdateCartButton';
 import Image from '../Image';
 import { REMOVE_FROM_CART } from '../UpdateCartButton/UpdateCartButton.config';
 import SliderButton from '../SliderButton';
+import CSS from '../../util/CSS';
 
 import './CartPageItem.style.scss';
 
@@ -22,6 +23,8 @@ export class CartPageItem extends PureComponent {
   };
 
   imageRef = createRef();
+
+  galleryRef = createRef();
 
   componentDidMount() {
     const { registerRef } = this.props;
@@ -62,7 +65,7 @@ export class CartPageItem extends PureComponent {
   }
 
   renderImage = (src) => {
-    const { product, offsetImage } = this.props;
+    const { product } = this.props;
     const { id } = product;
 
     return (
@@ -71,7 +74,6 @@ export class CartPageItem extends PureComponent {
         to={`/pd/${id}`}
         className="CartPageItem-ImageLink"
         ref={this.imageRef}
-        style={{ '--transform': `${-offsetImage}px` }}
       >
         <Image src={src} className="CartPageItem-Image" />
       </Link>
@@ -86,11 +88,12 @@ export class CartPageItem extends PureComponent {
         <>
           <SliderButton
             className="CartPageItem-GalleryButton_prev"
+            rotation="Left"
             onClickButton={onClickButtonPrev}
           />
           <SliderButton
             className="CartPageItem-GalleryButton_next"
-            angelRotation={180}
+            rotation="Right"
             onClickButton={onClickButtonNext}
           />
         </>
@@ -99,10 +102,13 @@ export class CartPageItem extends PureComponent {
   }
 
   renderGallery() {
-    const { product } = this.props;
+    const { product, offsetImage } = this.props;
     const { gallery } = product;
+
+    CSS.setVariable(this.galleryRef, 'transform', `${-offsetImage}px`);
+
     return (
-      <div className="CartPageItem-Gallery">
+      <div ref={this.galleryRef} className="CartPageItem-Gallery">
         {gallery.map(this.renderImage)}
         {this.renderGalleryButtons()}
       </div>

@@ -19,9 +19,9 @@ export class ProductPage extends PureComponent {
 
   renderProductGallery() {
     const {
-      product: { gallery },
+      product: { gallery, inStock },
     } = this.props;
-    return <ProductGallery gallery={gallery} />;
+    return <ProductGallery gallery={gallery} inStock={inStock} />;
   }
 
   renderProductAttributes() {

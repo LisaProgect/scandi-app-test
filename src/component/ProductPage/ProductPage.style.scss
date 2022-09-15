@@ -33,6 +33,9 @@ $title-line-height: 27px;
       font-family: 'Roboto';
       line-height: var(--paragraph-line-height);
     }
+    li {
+      list-style-type: disc;
+    }
   }
   &-PriceWrapper {
     display: flex;

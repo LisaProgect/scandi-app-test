@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 import { hideMessage } from '../../store/slices/messageSlice';
+import MESSAGE_LIFETIME from './Message.config';
 
 import './Message.style.scss';
 
@@ -17,8 +18,16 @@ export class Message extends PureComponent {
     hideMessage: PropTypes.func.isRequired,
   };
 
-  componentDidMount() {
-    this.hideMessage();
+  componentDidUpdate(prevProps) {
+    const { message } = this.props;
+    const { text, type } = message;
+    if (prevProps.message.text !== text && prevProps.message.type !== type) {
+      this.hideTimeout = setTimeout(() => this.hideMessage(), MESSAGE_LIFETIME);
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.hideTimeout);
   }
 
   hideMessage = () => {

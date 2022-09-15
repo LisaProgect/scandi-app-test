@@ -1,25 +1,10 @@
-import { roundNumber } from '../Price';
-
 export const getQtyProductsInCart = (productsList) =>
-  !productsList.length
-    ? 0
-    : productsList.reduce((acc, { qty }) => acc + qty, 0);
+  !productsList.length ? 0 : productsList.reduce((acc, { qty }) => acc + qty, 0);
 
 const checkEveryAttributes = (attributes, options) =>
   Object.keys(options).every(
     (option) => attributes[option] && attributes[option] === options[option],
   );
-
-const updatePrices = (prices, qty, curQty) =>
-  prices.map(({ amount, currency }) => {
-    const pricePerUnit = amount / qty;
-    const newAmount = roundNumber(pricePerUnit * curQty);
-
-    return {
-      amount: newAmount,
-      currency,
-    };
-  });
 
 export const updateCartItems = (prevProducts, curProduct) => {
   if (!prevProducts.length) {
@@ -46,11 +31,8 @@ export const updateCartItems = (prevProducts, curProduct) => {
 
     if (id === curProduct.id && checkAttr) {
       const curQty = qty + curProduct.qty;
-      const curPrices = updatePrices(prevProduct.prices, qty, curQty);
 
-      return curQty > 0
-        ? [...acc, { ...prevProduct, qty: curQty, prices: curPrices }]
-        : acc;
+      return curQty > 0 ? [...acc, { ...prevProduct, qty: curQty }] : acc;
     }
 
     return [...acc, prevProduct];

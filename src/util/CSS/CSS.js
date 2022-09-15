@@ -1,6 +1,14 @@
 import sizeMap from './CSS.config';
 
-const parseSize = (size) => {
+export class CSS {
+  static setVariable(ref, name, value) {
+    if (ref.current) {
+      ref.current.style.setProperty(`--${name}`, value);
+    }
+  }
+}
+
+export const parseSize = (size) => {
   if (typeof size === 'number') {
     return {
       size: `${size}`,
@@ -18,4 +26,4 @@ const parseSize = (size) => {
   };
 };
 
-export default parseSize;
+export default CSS;

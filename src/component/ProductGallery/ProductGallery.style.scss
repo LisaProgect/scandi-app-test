@@ -41,10 +41,27 @@ $heightThumbnail: 80px;
   width: 610px;
   height: 511px;
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
   &-Image {
     height: 100%;
+  }
+  &-Overlay {
+    display: flex;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: var(--white-color);
+    opacity: 0.5;
+    justify-content: center;
+    align-items: center;
+  }
+  &-OverlayTitle {
+    text-transform: uppercase;
   }
 }
 

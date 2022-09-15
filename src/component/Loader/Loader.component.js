@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
-import { PureComponent } from 'react';
+import { PureComponent, createRef } from 'react';
+
+import CSS from '../../util/CSS';
 
 import './Loader.style.scss';
 
@@ -13,6 +15,8 @@ export class Loader extends PureComponent {
     size: 14,
   };
 
+  loaderRef = createRef();
+
   render() {
     const { isLoading, size } = this.props;
 
@@ -20,7 +24,9 @@ export class Loader extends PureComponent {
       return null;
     }
 
-    return <div className="Loader" style={{ fontSize: `${size}px` }} />;
+    CSS.setVariable(this.loaderRef, 'font-size', `${size}px`);
+
+    return <div className="Loader" ref={this.loaderRef} />;
   }
 }
 

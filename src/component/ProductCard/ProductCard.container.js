@@ -2,8 +2,9 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import ProductCard from './ProductCard.component';
-import { PricesType } from '../../type/ProductList';
+import { PricesType, AttributesType } from '../../type/ProductList';
 import getFirstImage from '../../util/Image';
+import getFirstAttributes from '../../util/Attributes';
 
 export class ProductCardContainer extends PureComponent {
   static propTypes = {
@@ -13,16 +14,14 @@ export class ProductCardContainer extends PureComponent {
     name: PropTypes.string.isRequired,
     prices: PropTypes.arrayOf(PricesType).isRequired,
     brand: PropTypes.string.isRequired,
+    attributes: PropTypes.arrayOf(AttributesType).isRequired,
   };
 
   containerProps = () => {
-    const { id, inStock, name, prices, gallery } = this.props;
+    const { gallery, attributes } = this.props;
     return {
-      id,
-      inStock,
-      name,
-      prices,
       srcImg: getFirstImage(gallery),
+      firstAttribute: getFirstAttributes(attributes),
     };
   };
 

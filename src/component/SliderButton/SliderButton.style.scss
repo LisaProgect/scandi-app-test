@@ -7,7 +7,19 @@
   align-items: center;
   position: absolute;
   z-index: 10;
-  svg {
-    transform: rotate(var(--angle-rotation));
+}
+
+.SliderRotate {
+  &-Up {
+    transform: rotate(90deg);
+  }
+  &-Down {
+    transform: rotate(-90deg);
+  }
+  &-Left {
+    transform: rotate(360deg);
+  }
+  &-Right {
+    transform: rotate(180deg);
   }
 }

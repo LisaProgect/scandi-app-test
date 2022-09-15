@@ -6,11 +6,11 @@ import './ProductPrice.style.scss';
 
 export class ProductPrice extends PureComponent {
   static propTypes = {
-    amount: PropTypes.number.isRequired,
+    amount: PropTypes.string.isRequired,
     symbol: PropTypes.string.isRequired,
     className: PropTypes.string,
     isTax: PropTypes.bool,
-    tax: PropTypes.number.isRequired,
+    tax: PropTypes.string.isRequired,
   };
 
   static defaultProps = {

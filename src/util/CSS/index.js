@@ -1,1 +1,1 @@
-export { default } from './CSS';
+export { default, parseSize } from './CSS';

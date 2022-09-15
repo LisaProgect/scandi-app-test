@@ -1,0 +1,2 @@
+const MESSAGE_LIFETIME = 3000;
+export default MESSAGE_LIFETIME;
