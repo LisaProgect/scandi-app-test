@@ -10,10 +10,10 @@ $width-text-small: 24px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: start;
+  justify-content: flex-start;
   &-Items {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
   }
   &-Content {
     display: flex;

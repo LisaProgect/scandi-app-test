@@ -13,14 +13,14 @@ $title-line-height: 27px;
 .ProductInfo {
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: flex-start;
   &-Title {
     font-size: $title-font-size;
     line-height: $title-line-height;
     font-weight: 400;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     margin-bottom: 43px;
   }
@@ -40,7 +40,7 @@ $title-line-height: 27px;
   &-PriceWrapper {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
     padding-bottom: 32px;
   }
   &-PriceName {
